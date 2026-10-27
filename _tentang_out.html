@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tentang · PassGo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in wrap">
+    <a class="brand" href="index.php">
+      <img src="assets/logo.svg" width="36" height="36" alt="Logo PassGo">
+      <span>PassGo<small>Data Warehouse Tiket</small></span>
+    </a>
+    <nav>
+      <a href="index.php" class="">Beranda</a>
+      <a href="laporan.php" class="">Laporan</a>
+      <a href="tentang.php" class="aktif">Tentang</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero identitas">
+  <img src="assets/logo.svg" width="88" height="88" alt="Logo PassGo">
+  <div>
+    <p class="eyebrow">Identitas brand</p>
+    <h1>PassGo</h1>
+    <p class="lead">Tiket bioskop yang mudah dipesan, dan data penjualannya yang mudah dibaca. Nama dan identitas ini dipakai untuk seluruh tampilan proyek data warehouse.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Latar belakang</h2>
+  <div class="kolom dua">
+    <article class="kartu">
+      <p>Penjualan tiket bioskop berlangsung setiap hari, dari berbagai bioskop, film, dan jenis pembeli. Setiap transaksi memang tercatat, tetapi catatan itu tersimpan sebagai baris-baris terpisah yang tidak mudah diringkas. Pengelola sulit menjawab pertanyaan sederhana seperti film mana yang paling laku di bulan tertentu atau segmen pembeli mana yang paling sering memakai diskon.</p>
+    </article>
+    <article class="kartu">
+      <p>Karena itu, PassGo membangun data warehouse sebagai tempat penyimpanan khusus untuk analisis. Data dari sistem transaksi disusun ulang ke dalam skema bintang, sehingga setiap angka pendapatan dan jumlah tiket bisa ditelusuri ke dimensi waktu, film, bioskop, dan pelanggan yang menghasilkannya.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Visi dan misi</h2>
+  <div class="kolom dua">
+    <article class="kartu">
+      <h3>Visi</h3>
+      <p>Menjadi layanan tiket bioskop yang keputusannya didasarkan pada data yang bersih, konsisten, dan dapat dipertanggungjawabkan.</p>
+    </article>
+    <article class="kartu">
+      <h3>Misi</h3>
+      <p>Menyediakan data penjualan yang seragam dari setiap bioskop mitra, menyajikannya dalam laporan yang mudah dibaca, dan menjaga agar setiap angka dapat dilacak kembali ke transaksi asalnya.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Palet warna</h2>
+  <p class="catatan">Kelima warna ini dipakai konsisten di seluruh halaman. Nilai heksadesimal tercantum di bawah setiap contoh.</p>
+  <div class="palet">
+    <div>
+      <div class="swatch" style="background:#0e4d52"></div>
+      <div class="swatch-info"><strong>Teal Layar</strong><code>#0E4D52</code><p>Warna utama untuk header, tombol, dan batang grafik.</p></div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#e9a23b"></div>
+      <div class="swatch-info"><strong>Amber Proyektor</strong><code>#E9A23B</code><p>Aksen dan sorotan, misalnya penanda menu aktif.</p></div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#f6f4ef"></div>
+      <div class="swatch-info"><strong>Kertas Tiket</strong><code>#F6F4EF</code><p>Latar halaman dan logo.</p></div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#1d2528"></div>
+      <div class="swatch-info"><strong>Tinta</strong><code>#1D2528</code><p>Teks utama dan judul.</p></div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#b5432f"></div>
+      <div class="swatch-info"><strong>Merah Bata</strong><code>#B5432F</code><p>Label kecil dan penanda kategori.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Tipografi</h2>
+  <div class="kolom dua">
+    <article class="kartu">
+      <p class="eyebrow">Judul · Georgia Bold</p>
+      <h2>Ringkasan penjualan</h2>
+      <p class="catatan">Font serif dipakai untuk judul agar terasa seperti laporan resmi. Georgia tersedia di Windows, macOS, dan Linux tanpa perlu internet.</p>
+    </article>
+    <article class="kartu">
+      <p class="eyebrow">Isi · Segoe UI, Roboto, sans-serif</p>
+      <p>Teks isi memakai huruf sans-serif berukuran 16 px dengan jarak baris 1,6. Angka dalam tabel rata kanan agar nilai rupiah mudah dibandingkan.</p>
+      <p class="catatan">Contoh angka: <strong>Rp 1.250.000</strong></p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Arsitektur data warehouse</h2>
+  <p class="catatan">Skema bintang: satu tabel fakta berisi ukuran penjualan, dan setiap baris fakta mengacu ke empat tabel dimensi melalui kunci asing.</p>
+  <div class="star">
+    <div class="dim atas">
+      <h3>dim_waktu</h3>
+      <p class="kolom-db">id_waktu, tanggal, hari, bulan, nama_bulan, kuartal, tahun</p>
+    </div>
+    <div class="dim kiri">
+      <h3>dim_film</h3>
+      <p class="kolom-db">id_film, kode_film, judul, genre, durasi_menit, rating</p>
+    </div>
+    <div class="fakta">
+      <h3>fact_penjualan</h3>
+      <p class="kolom-db terang">id_waktu, id_film, id_bioskop, id_pelanggan, no_transaksi, jumlah_tiket, harga_satuan, diskon, total_bayar, metode_bayar</p>
+    </div>
+    <div class="dim kanan">
+      <h3>dim_bioskop</h3>
+      <p class="kolom-db">id_bioskop, kode_bioskop, nama_bioskop, kota, jumlah_studio</p>
+    </div>
+    <div class="dim bawah">
+      <h3>dim_pelanggan</h3>
+      <p class="kolom-db">id_pelanggan, kode_segmen, nama_segmen, diskon_persen, deskripsi</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Alur pengisian data (ETL)</h2>
+  <div class="kolom">
+    <article class="kartu">
+      <h3>1. Extract</h3>
+      <p>Data transaksi diambil dari sumber penjualan, lalu dipastikan setiap baris memiliki nomor transaksi, tanggal, bioskop, film, dan jumlah tiket yang lengkap.</p>
+    </article>
+    <article class="kartu">
+      <h3>2. Transform</h3>
+      <p>Tanggal diubah menjadi kunci YYYYMMDD di dimensi waktu, harga dan diskon dihitung per segmen pelanggan, lalu nilai bayar dipastikan sama dengan subtotal dikurangi diskon.</p>
+    </article>
+    <article class="kartu">
+      <h3>3. Load</h3>
+      <p>Dimensi dimuat lebih dulu, kemudian tabel fakta, supaya setiap kunci asing sudah tersedia saat baris fakta dimasukkan.</p>
+    </article>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>PassGo</strong> · Data Warehouse Penjualan Tiket · Proyek mata kuliah Data Warehouse</p>
+    <p>Seluruh angka dan nama pada situs ini adalah data contoh hasil simulasi untuk keperluan tugas, bukan data transaksi nyata.</p>
+  </div>
+</footer>
+</body>
+</html>

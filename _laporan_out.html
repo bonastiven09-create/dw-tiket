@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laporan · PassGo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in wrap">
+    <a class="brand" href="index.php">
+      <img src="assets/logo.svg" width="36" height="36" alt="Logo PassGo">
+      <span>PassGo<small>Data Warehouse Tiket</small></span>
+    </a>
+    <nav>
+      <a href="index.php" class="">Beranda</a>
+      <a href="laporan.php" class="aktif">Laporan</a>
+      <a href="tentang.php" class="">Tentang</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">Laporan analisis</p>
+  <h1>Laporan penjualan tiket</h1>
+  <p class="lead">Setiap tabel di bawah dihitung dari tabel fakta yang dihubungkan ke dimensi waktu, film, bioskop, dan pelanggan.</p>
+</section>
+
+
+<form class="filter" method="get" action="laporan.php">
+  <div>
+    <label for="tahun">Tahun</label>
+    <select id="tahun" name="tahun">
+              <option value="2026" selected>2026</option>
+          </select>
+  </div>
+  <button type="submit">Tampilkan</button>
+</form>
+
+<section class="section">
+  <h2>Pendapatan per bioskop</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bioskop</th><th>Kota</th>
+          <th class="num">Transaksi</th><th class="num">Tiket</th>
+          <th class="num">Pendapatan</th><th class="num">Porsi</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>Bioskop Pekanbaru Riverside</td>
+            <td>Pekanbaru</td>
+            <td class="num">259</td>
+            <td class="num">615</td>
+            <td class="num">Rp 27.046.500</td>
+            <td class="num">20,9%</td>
+          </tr>
+                  <tr>
+            <td>Bioskop Medan Central</td>
+            <td>Medan</td>
+            <td class="num">250</td>
+            <td class="num">628</td>
+            <td class="num">Rp 26.934.250</td>
+            <td class="num">20,9%</td>
+          </tr>
+                  <tr>
+            <td>Bioskop Binjai Square</td>
+            <td>Binjai</td>
+            <td class="num">239</td>
+            <td class="num">597</td>
+            <td class="num">Rp 26.511.500</td>
+            <td class="num">20,5%</td>
+          </tr>
+                  <tr>
+            <td>Bioskop Medan Utara</td>
+            <td>Medan</td>
+            <td class="num">233</td>
+            <td class="num">553</td>
+            <td class="num">Rp 24.499.000</td>
+            <td class="num">19,0%</td>
+          </tr>
+                  <tr>
+            <td>Bioskop Pematangsiantar Mall</td>
+            <td>Pematangsiantar</td>
+            <td class="num">219</td>
+            <td class="num">547</td>
+            <td class="num">Rp 24.181.000</td>
+            <td class="num">18,7%</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pendapatan per genre film</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Genre</th>
+          <th class="num">Transaksi</th><th class="num">Tiket</th>
+          <th class="num">Pendapatan</th><th class="num">Porsi</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>Aksi</td>
+            <td class="num">329</td>
+            <td class="num">806</td>
+            <td class="num">Rp 35.612.000</td>
+            <td class="num">27,6%</td>
+          </tr>
+                  <tr>
+            <td>Drama</td>
+            <td class="num">279</td>
+            <td class="num">672</td>
+            <td class="num">Rp 28.927.750</td>
+            <td class="num">22,4%</td>
+          </tr>
+                  <tr>
+            <td>Animasi</td>
+            <td class="num">167</td>
+            <td class="num">417</td>
+            <td class="num">Rp 18.575.250</td>
+            <td class="num">14,4%</td>
+          </tr>
+                  <tr>
+            <td>Horor</td>
+            <td class="num">148</td>
+            <td class="num">362</td>
+            <td class="num">Rp 15.827.750</td>
+            <td class="num">12,3%</td>
+          </tr>
+                  <tr>
+            <td>Romansa</td>
+            <td class="num">135</td>
+            <td class="num">343</td>
+            <td class="num">Rp 15.192.000</td>
+            <td class="num">11,8%</td>
+          </tr>
+                  <tr>
+            <td>Komedi</td>
+            <td class="num">142</td>
+            <td class="num">340</td>
+            <td class="num">Rp 15.037.500</td>
+            <td class="num">11,6%</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pendapatan per segmen pelanggan</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Segmen</th><th class="num">Diskon</th>
+          <th class="num">Tiket</th><th class="num">Total diskon</th>
+          <th class="num">Pendapatan</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>Umum</td>
+            <td class="num">0%</td>
+            <td class="num">755</td>
+            <td class="num">Rp 0</td>
+            <td class="num">Rp 36.760.000</td>
+          </tr>
+                  <tr>
+            <td>Mahasiswa</td>
+            <td class="num">10%</td>
+            <td class="num">751</td>
+            <td class="num">Rp 3.601.000</td>
+            <td class="num">Rp 32.409.000</td>
+          </tr>
+                  <tr>
+            <td>Member</td>
+            <td class="num">10%</td>
+            <td class="num">725</td>
+            <td class="num">Rp 3.437.500</td>
+            <td class="num">Rp 30.937.500</td>
+          </tr>
+                  <tr>
+            <td>Pelajar</td>
+            <td class="num">15%</td>
+            <td class="num">709</td>
+            <td class="num">Rp 5.129.250</td>
+            <td class="num">Rp 29.065.750</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Tren per bulan</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bulan</th>
+          <th class="num">Transaksi</th><th class="num">Tiket</th>
+          <th class="num">Pendapatan</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>Januari</td>
+            <td class="num">131</td>
+            <td class="num">348</td>
+            <td class="num">Rp 15.833.000</td>
+          </tr>
+                  <tr>
+            <td>Februari</td>
+            <td class="num">109</td>
+            <td class="num">274</td>
+            <td class="num">Rp 11.734.750</td>
+          </tr>
+                  <tr>
+            <td>Maret</td>
+            <td class="num">131</td>
+            <td class="num">294</td>
+            <td class="num">Rp 13.015.000</td>
+          </tr>
+                  <tr>
+            <td>April</td>
+            <td class="num">120</td>
+            <td class="num">301</td>
+            <td class="num">Rp 13.015.750</td>
+          </tr>
+                  <tr>
+            <td>Mei</td>
+            <td class="num">142</td>
+            <td class="num">335</td>
+            <td class="num">Rp 14.752.250</td>
+          </tr>
+                  <tr>
+            <td>Juni</td>
+            <td class="num">125</td>
+            <td class="num">305</td>
+            <td class="num">Rp 12.995.500</td>
+          </tr>
+                  <tr>
+            <td>Juli</td>
+            <td class="num">138</td>
+            <td class="num">331</td>
+            <td class="num">Rp 14.498.000</td>
+          </tr>
+                  <tr>
+            <td>Agustus</td>
+            <td class="num">112</td>
+            <td class="num">292</td>
+            <td class="num">Rp 13.474.500</td>
+          </tr>
+                  <tr>
+            <td>September</td>
+            <td class="num">114</td>
+            <td class="num">277</td>
+            <td class="num">Rp 12.079.000</td>
+          </tr>
+                  <tr>
+            <td>Oktober</td>
+            <td class="num">78</td>
+            <td class="num">183</td>
+            <td class="num">Rp 7.774.500</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Metode pembayaran</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metode</th><th class="num">Transaksi</th>
+          <th class="num">Pendapatan</th><th class="num">Porsi</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>QRIS</td>
+            <td class="num">312</td>
+            <td class="num">Rp 35.247.750</td>
+            <td class="num">27,3%</td>
+          </tr>
+                  <tr>
+            <td>E-Wallet</td>
+            <td class="num">314</td>
+            <td class="num">Rp 32.754.250</td>
+            <td class="num">25,4%</td>
+          </tr>
+                  <tr>
+            <td>Kartu Debit</td>
+            <td class="num">302</td>
+            <td class="num">Rp 32.499.250</td>
+            <td class="num">25,2%</td>
+          </tr>
+                  <tr>
+            <td>Tunai</td>
+            <td class="num">272</td>
+            <td class="num">Rp 28.671.000</td>
+            <td class="num">22,2%</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>20 transaksi terbaru</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No. transaksi</th><th>Tanggal</th><th>Bioskop</th><th>Film</th>
+          <th>Segmen</th><th class="num">Tiket</th><th class="num">Total bayar</th><th>Metode</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>PG26102801168</td>
+            <td>28/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Pemburu Bayangan</td>
+            <td>Pelajar</td>
+            <td class="num">1</td>
+            <td class="num">Rp 38.250</td>
+            <td>QRIS</td>
+          </tr>
+                  <tr>
+            <td>PG26102800446</td>
+            <td>28/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Kejar Waktu</td>
+            <td>Member</td>
+            <td class="num">3</td>
+            <td class="num">Rp 108.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102800268</td>
+            <td>28/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Kejar Waktu</td>
+            <td>Mahasiswa</td>
+            <td class="num">3</td>
+            <td class="num">Rp 108.000</td>
+            <td>Tunai</td>
+          </tr>
+                  <tr>
+            <td>PG26102800165</td>
+            <td>28/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Dapur Sabtu Malam</td>
+            <td>Member</td>
+            <td class="num">1</td>
+            <td class="num">Rp 36.000</td>
+            <td>QRIS</td>
+          </tr>
+                  <tr>
+            <td>PG26102701135</td>
+            <td>27/10/2026</td>
+            <td>Bioskop Pekanbaru Riverside</td>
+            <td>Kejar Waktu</td>
+            <td>Member</td>
+            <td class="num">2</td>
+            <td class="num">Rp 63.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102600918</td>
+            <td>26/10/2026</td>
+            <td>Bioskop Pematangsiantar Mall</td>
+            <td>Hutan dalam Kabut</td>
+            <td>Mahasiswa</td>
+            <td class="num">1</td>
+            <td class="num">Rp 36.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102600641</td>
+            <td>26/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Petualangan Si Kecil</td>
+            <td>Umum</td>
+            <td class="num">1</td>
+            <td class="num">Rp 55.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102600086</td>
+            <td>26/10/2026</td>
+            <td>Bioskop Pematangsiantar Mall</td>
+            <td>Kejar Waktu</td>
+            <td>Mahasiswa</td>
+            <td class="num">3</td>
+            <td class="num">Rp 135.000</td>
+            <td>E-Wallet</td>
+          </tr>
+                  <tr>
+            <td>PG26102501174</td>
+            <td>25/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Pemburu Bayangan</td>
+            <td>Member</td>
+            <td class="num">2</td>
+            <td class="num">Rp 99.000</td>
+            <td>Tunai</td>
+          </tr>
+                  <tr>
+            <td>PG26102500789</td>
+            <td>25/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Jalan Pulang ke Selatan</td>
+            <td>Mahasiswa</td>
+            <td class="num">4</td>
+            <td class="num">Rp 198.000</td>
+            <td>QRIS</td>
+          </tr>
+                  <tr>
+            <td>PG26102500743</td>
+            <td>25/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Senja di Kota Tua</td>
+            <td>Mahasiswa</td>
+            <td class="num">2</td>
+            <td class="num">Rp 90.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102500528</td>
+            <td>25/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Kejar Waktu</td>
+            <td>Mahasiswa</td>
+            <td class="num">3</td>
+            <td class="num">Rp 135.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102500196</td>
+            <td>25/10/2026</td>
+            <td>Bioskop Medan Central</td>
+            <td>Petualangan Si Kecil</td>
+            <td>Pelajar</td>
+            <td class="num">2</td>
+            <td class="num">Rp 102.000</td>
+            <td>QRIS</td>
+          </tr>
+                  <tr>
+            <td>PG26102400861</td>
+            <td>24/10/2026</td>
+            <td>Bioskop Binjai Square</td>
+            <td>Pemburu Bayangan</td>
+            <td>Mahasiswa</td>
+            <td class="num">4</td>
+            <td class="num">Rp 198.000</td>
+            <td>Kartu Debit</td>
+          </tr>
+                  <tr>
+            <td>PG26102300828</td>
+            <td>23/10/2026</td>
+            <td>Bioskop Binjai Square</td>
+            <td>Pelangi di Danau Toba</td>
+            <td>Mahasiswa</td>
+            <td class="num">3</td>
+            <td class="num">Rp 148.500</td>
+            <td>E-Wallet</td>
+          </tr>
+                  <tr>
+            <td>PG26102200896</td>
+            <td>22/10/2026</td>
+            <td>Bioskop Pekanbaru Riverside</td>
+            <td>Dapur Sabtu Malam</td>
+            <td>Member</td>
+            <td class="num">1</td>
+            <td class="num">Rp 49.500</td>
+            <td>Tunai</td>
+          </tr>
+                  <tr>
+            <td>PG26102200168</td>
+            <td>22/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Senja di Kota Tua</td>
+            <td>Mahasiswa</td>
+            <td class="num">1</td>
+            <td class="num">Rp 36.000</td>
+            <td>QRIS</td>
+          </tr>
+                  <tr>
+            <td>PG26102101020</td>
+            <td>21/10/2026</td>
+            <td>Bioskop Pematangsiantar Mall</td>
+            <td>Hutan dalam Kabut</td>
+            <td>Pelajar</td>
+            <td class="num">3</td>
+            <td class="num">Rp 127.500</td>
+            <td>E-Wallet</td>
+          </tr>
+                  <tr>
+            <td>PG26102100823</td>
+            <td>21/10/2026</td>
+            <td>Bioskop Binjai Square</td>
+            <td>Pelangi di Danau Toba</td>
+            <td>Umum</td>
+            <td class="num">2</td>
+            <td class="num">Rp 70.000</td>
+            <td>E-Wallet</td>
+          </tr>
+                  <tr>
+            <td>PG26102100294</td>
+            <td>21/10/2026</td>
+            <td>Bioskop Medan Utara</td>
+            <td>Jalan Pulang ke Selatan</td>
+            <td>Member</td>
+            <td class="num">1</td>
+            <td class="num">Rp 40.500</td>
+            <td>Tunai</td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</section>
+
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>PassGo</strong> · Data Warehouse Penjualan Tiket · Proyek mata kuliah Data Warehouse</p>
+    <p>Seluruh angka dan nama pada situs ini adalah data contoh hasil simulasi untuk keperluan tugas, bukan data transaksi nyata.</p>
+  </div>
+</footer>
+</body>
+</html>

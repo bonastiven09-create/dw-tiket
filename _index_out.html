@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beranda · PassGo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in wrap">
+    <a class="brand" href="index.php">
+      <img src="assets/logo.svg" width="36" height="36" alt="Logo PassGo">
+      <span>PassGo<small>Data Warehouse Tiket</small></span>
+    </a>
+    <nav>
+      <a href="index.php" class="aktif">Beranda</a>
+      <a href="laporan.php" class="">Laporan</a>
+      <a href="tentang.php" class="">Tentang</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">Proyek Data Warehouse · Penjualan Tiket</p>
+  <h1>Ringkasan penjualan tiket PassGo dalam satu halaman</h1>
+  <p class="lead">Halaman ini membaca tabel fakta dan dimensi dari data warehouse, lalu menyajikan pendapatan, jumlah tiket, dan film terlaris tanpa perlu membuka catatan transaksi satu per satu.</p>
+</section>
+
+<section class="section">
+  <h2>Latar belakang</h2>
+  <div class="kolom">
+    <article class="kartu">
+      <h3>Masalah</h3>
+      <p>Transaksi penjualan tiket tercatat satu per satu di sistem operasional. Catatan seperti ini cocok untuk melayani pembeli, tetapi sulit dipakai untuk melihat tren, misalnya film apa yang paling diminati atau bioskop mana yang paling ramai dalam satu tahun.</p>
+    </article>
+    <article class="kartu">
+      <h3>Tujuan</h3>
+      <p>Data warehouse menyimpan data penjualan dalam bentuk yang siap dianalisis. Dengan begitu, pertanyaan manajemen bisa dijawab melalui satu kueri yang rapi, dan hasilnya bisa dipercaya karena bersumber dari satu tempat yang sama.</p>
+    </article>
+    <article class="kartu">
+      <h3>Metode</h3>
+      <p>Data dipindahkan dari sumber transaksi melalui proses ETL (extract, transform, load) ke skema bintang: satu tabel fakta penjualan dikelilingi empat tabel dimensi, yaitu waktu, film, bioskop, dan pelanggan. Rinciannya ada di halaman Tentang.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Kinerja penjualan</h2>
+
+  
+    <div class="grid-kpi">
+      <div class="kpi">
+        <p class="label">Total pendapatan</p>
+        <p class="nilai">Rp 129.172.250</p>
+        <p class="sub">Sudah dikurangi diskon segmen</p>
+      </div>
+      <div class="kpi">
+        <p class="label">Tiket terjual</p>
+        <p class="nilai">2.940</p>
+        <p class="sub">Semua film dan bioskop</p>
+      </div>
+      <div class="kpi">
+        <p class="label">Jumlah transaksi</p>
+        <p class="nilai">1.200</p>
+        <p class="sub">Satu transaksi bisa berisi beberapa tiket</p>
+      </div>
+      <div class="kpi">
+        <p class="label">Rata-rata per transaksi</p>
+        <p class="nilai">Rp 107.644</p>
+        <p class="sub">Pendapatan dibagi jumlah transaksi</p>
+      </div>
+    </div>
+
+    <div class="kartu mt">
+      <h3>Pendapatan per bulan</h3>
+      <p class="catatan">Dalam juta rupiah. Batang tertinggi diberi warna berbeda.</p>
+      <div class="bars">
+                  <div class="bar">
+            <b>15,8</b>
+            <div class="tiang">
+              <i class="puncak" style="height: 100%"></i>
+            </div>
+            <span>Jan</span>
+          </div>
+                  <div class="bar">
+            <b>11,7</b>
+            <div class="tiang">
+              <i class="" style="height: 74.1%"></i>
+            </div>
+            <span>Feb</span>
+          </div>
+                  <div class="bar">
+            <b>13,0</b>
+            <div class="tiang">
+              <i class="" style="height: 82.2%"></i>
+            </div>
+            <span>Mar</span>
+          </div>
+                  <div class="bar">
+            <b>13,0</b>
+            <div class="tiang">
+              <i class="" style="height: 82.2%"></i>
+            </div>
+            <span>Apr</span>
+          </div>
+                  <div class="bar">
+            <b>14,8</b>
+            <div class="tiang">
+              <i class="" style="height: 93.2%"></i>
+            </div>
+            <span>Mei</span>
+          </div>
+                  <div class="bar">
+            <b>13,0</b>
+            <div class="tiang">
+              <i class="" style="height: 82.1%"></i>
+            </div>
+            <span>Jun</span>
+          </div>
+                  <div class="bar">
+            <b>14,5</b>
+            <div class="tiang">
+              <i class="" style="height: 91.6%"></i>
+            </div>
+            <span>Jul</span>
+          </div>
+                  <div class="bar">
+            <b>13,5</b>
+            <div class="tiang">
+              <i class="" style="height: 85.1%"></i>
+            </div>
+            <span>Agu</span>
+          </div>
+                  <div class="bar">
+            <b>12,1</b>
+            <div class="tiang">
+              <i class="" style="height: 76.3%"></i>
+            </div>
+            <span>Sep</span>
+          </div>
+                  <div class="bar">
+            <b>7,8</b>
+            <div class="tiang">
+              <i class="" style="height: 49.1%"></i>
+            </div>
+            <span>Okt</span>
+          </div>
+              </div>
+    </div>
+
+    <div class="tbl-wrap mt">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Film</th>
+            <th>Genre</th>
+            <th class="num">Tiket</th>
+            <th class="num">Pendapatan</th>
+          </tr>
+        </thead>
+        <tbody>
+                      <tr>
+              <td>1</td>
+              <td>Kejar Waktu</td>
+              <td>Aksi</td>
+              <td class="num">434</td>
+              <td class="num">Rp 18.907.250</td>
+            </tr>
+                      <tr>
+              <td>2</td>
+              <td>Petualangan Si Kecil</td>
+              <td>Animasi</td>
+              <td class="num">417</td>
+              <td class="num">Rp 18.575.250</td>
+            </tr>
+                      <tr>
+              <td>3</td>
+              <td>Pemburu Bayangan</td>
+              <td>Aksi</td>
+              <td class="num">372</td>
+              <td class="num">Rp 16.704.750</td>
+            </tr>
+                      <tr>
+              <td>4</td>
+              <td>Hutan dalam Kabut</td>
+              <td>Horor</td>
+              <td class="num">362</td>
+              <td class="num">Rp 15.827.750</td>
+            </tr>
+                      <tr>
+              <td>5</td>
+              <td>Pelangi di Danau Toba</td>
+              <td>Romansa</td>
+              <td class="num">343</td>
+              <td class="num">Rp 15.192.000</td>
+            </tr>
+                  </tbody>
+      </table>
+    </div>
+
+    <p class="mt"><a class="tombol" href="laporan.php">Buka laporan lengkap</a></p>
+
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>PassGo</strong> · Data Warehouse Penjualan Tiket · Proyek mata kuliah Data Warehouse</p>
+    <p>Seluruh angka dan nama pada situs ini adalah data contoh hasil simulasi untuk keperluan tugas, bukan data transaksi nyata.</p>
+  </div>
+</footer>
+</body>
+</html>
