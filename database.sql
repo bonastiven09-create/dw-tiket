@@ -30,6 +30,15 @@ CREATE TABLE cinemas (
   address VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(120) NOT NULL,
+  email VARCHAR(160) NOT NULL UNIQUE,
+  username VARCHAR(80) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE screenings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   movie_id INT NOT NULL,
@@ -51,6 +60,7 @@ CREATE TABLE bookings (
   movie_id INT NOT NULL,
   cinema_id INT NOT NULL,
   screening_id INT NOT NULL,
+  seat_number VARCHAR(40) NOT NULL DEFAULT 'A1',
   quantity INT NOT NULL,
   total_amount INT NOT NULL,
   payment_method VARCHAR(30) NOT NULL,
@@ -85,20 +95,24 @@ INSERT INTO cinemas (name, city, address) VALUES
 ('Cinema 21 Binjai', 'Binjai', 'Jl. Sisingamangaraja No. 102'),
 ('Cinema 21 Pematangsiantar', 'Pematangsiantar', 'Jl. Merdeka No. 77');
 
-INSERT INTO screenings (movie_id, cinema_id, hall, showtime, total_seats, available_seats, price) VALUES
-(1, 1, 'Studio 1', '2026-10-27 13:00:00', 48, 26, 50000),
-(1, 2, 'Studio 2', '2026-10-27 15:30:00', 48, 18, 50000),
-(2, 1, 'Studio 3', '2026-10-27 17:00:00', 48, 22, 45000),
-(3, 2, 'Studio 4', '2026-10-27 19:00:00', 48, 15, 55000),
-(4, 3, 'Studio 1', '2026-10-28 13:30:00', 48, 31, 42000),
-(5, 4, 'Studio 2', '2026-10-28 16:00:00', 48, 27, 40000),
-(2, 4, 'Studio 1', '2026-10-28 18:30:00', 48, 20, 45000),
-(3, 1, 'Studio 5', '2026-10-29 20:00:00', 48, 24, 55000);
+INSERT INTO users (full_name, email, username, password_hash) VALUES
+('Admin PassGo', 'admin@passgo.com', 'admin', '$2y$10$wkD5f2LfeGsu/vhYmxdnjulGXws11F5EmekWKY711LLbInrPe/u4a'),
+('Rina Sari', 'rina@mail.com', 'rina', '$2y$10$Z9bTffOb/feibtXxQfI/fuGBoJY330ml3lxbQqVEiS0AvppRcLu52');
 
-INSERT INTO bookings (booking_number, customer_name, customer_email, movie_id, cinema_id, screening_id, quantity, total_amount, payment_method, status) VALUES
-('PG-20261027-001', 'Ayu Pratama', 'ayu@mail.com', 1, 1, 1, 2, 100000, 'QRIS', 'paid'),
-('PG-20261027-002', 'Budi Santoso', 'budi@mail.com', 2, 1, 3, 3, 135000, 'E-Wallet', 'paid'),
-('PG-20261027-003', 'Citra Lestari', 'citra@mail.com', 4, 3, 5, 1, 42000, 'Bank Transfer', 'pending');
+INSERT INTO screenings (movie_id, cinema_id, hall, showtime, total_seats, available_seats, price) VALUES
+(1, 1, 'Studio 1', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 1 DAY), INTERVAL 13 HOUR), 48, 26, 50000),
+(1, 2, 'Studio 2', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 1 DAY), INTERVAL 15 HOUR + INTERVAL 30 MINUTE), 48, 18, 50000),
+(2, 1, 'Studio 3', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 2 DAY), INTERVAL 17 HOUR), 48, 22, 45000),
+(3, 2, 'Studio 4', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 3 DAY), INTERVAL 19 HOUR), 48, 15, 55000),
+(4, 3, 'Studio 1', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 4 DAY), INTERVAL 13 HOUR + INTERVAL 30 MINUTE), 48, 31, 42000),
+(5, 4, 'Studio 2', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 5 DAY), INTERVAL 16 HOUR), 48, 27, 40000),
+(2, 4, 'Studio 1', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 6 DAY), INTERVAL 18 HOUR + INTERVAL 30 MINUTE), 48, 20, 45000),
+(3, 1, 'Studio 5', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 7 DAY), INTERVAL 20 HOUR), 48, 24, 55000);
+
+INSERT INTO bookings (booking_number, customer_name, customer_email, movie_id, cinema_id, screening_id, seat_number, quantity, total_amount, payment_method, status) VALUES
+('PG-20261027-001', 'Ayu Pratama', 'ayu@mail.com', 1, 1, 1, 'A1, A2', 2, 100000, 'QRIS', 'paid'),
+('PG-20261027-002', 'Budi Santoso', 'budi@mail.com', 2, 1, 3, 'C4, C5, C6', 3, 135000, 'E-Wallet', 'paid'),
+('PG-20261027-003', 'Citra Lestari', 'citra@mail.com', 4, 3, 5, 'B7', 1, 42000, 'Bank Transfer', 'pending');
 
 INSERT INTO payments (booking_id, payment_reference, amount, payment_method, status, paid_at) VALUES
 (1, 'PAY-20261027-001', 100000, 'QRIS', 'paid', '2026-10-27 12:45:00'),

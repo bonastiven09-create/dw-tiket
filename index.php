@@ -1,4 +1,12 @@
 <?php
+require_once __DIR__ . '/koneksi.php';
+
+if (empty($_SESSION['user_id'])) {
+    $redirect = rawurlencode($_SERVER['REQUEST_URI'] ?? 'index.php');
+    header('Location: register.php?redirect=' . $redirect);
+    exit;
+}
+
 $judulHalaman = 'Beranda';
 $halaman      = 'beranda';
 require __DIR__ . '/includes/header.php';
@@ -47,20 +55,29 @@ $screenings = ambil($koneksi, "SELECT s.*, m.title, m.genre, m.duration_minutes,
 <section class="section">
   <h2>Jadwal tayang</h2>
   <div class="schedule-list">
-    <?php foreach ($screenings as $screening): ?>
+    <?php if (empty($screenings)): ?>
       <div class="schedule-item">
         <div>
-          <strong><?= e($screening['title']) ?></strong>
-          <p><?= e($screening['cinema_name']) ?> · <?= e($screening['city']) ?> · <?= e($screening['hall']) ?></p>
-        </div>
-        <div class="schedule-meta">
-          <span><?= date('d M Y', strtotime($screening['showtime'])) ?></span>
-          <span><?= date('H:i', strtotime($screening['showtime'])) ?></span>
-          <span><?= angka($screening['available_seats']) ?> kursi</span>
-          <a href="checkout.php?movie_id=<?= (int)$screening['movie_id'] ?>&screening_id=<?= (int)$screening['id'] ?>">Pesan</a>
+          <strong>Belum ada jadwal tayang yang tersedia.</strong>
+          <p>Silakan isi ulang data jadwal untuk menampilkan film yang akan datang.</p>
         </div>
       </div>
-    <?php endforeach; ?>
+    <?php else: ?>
+      <?php foreach ($screenings as $screening): ?>
+        <div class="schedule-item">
+          <div>
+            <strong><?= e($screening['title']) ?></strong>
+            <p><?= e($screening['cinema_name']) ?> · <?= e($screening['city']) ?> · <?= e($screening['hall']) ?></p>
+          </div>
+          <div class="schedule-meta">
+            <span><?= date('d M Y', strtotime($screening['showtime'])) ?></span>
+            <span><?= date('H:i', strtotime($screening['showtime'])) ?></span>
+            <span><?= angka($screening['available_seats']) ?> kursi</span>
+            <a href="checkout.php?movie_id=<?= (int)$screening['movie_id'] ?>&screening_id=<?= (int)$screening['id'] ?>">Pesan</a>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
   </div>
 </section>
 
@@ -73,6 +90,14 @@ $screenings = ambil($koneksi, "SELECT s.*, m.title, m.genre, m.duration_minutes,
         <select id="movie_id" name="movie_id" required>
           <?php foreach ($movies as $movie): ?>
             <option value="<?= (int)$movie['id'] ?>"><?= e($movie['title']) ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div>
+        <label for="cinema_id">Bioskop</label>
+        <select id="cinema_id" name="cinema_id" required>
+          <?php foreach (ambil($koneksi, 'SELECT * FROM cinemas ORDER BY city, name') as $cinema): ?>
+            <option value="<?= (int)$cinema['id'] ?>"><?= e($cinema['name']) ?> · <?= e($cinema['city']) ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -93,7 +118,7 @@ $screenings = ambil($koneksi, "SELECT s.*, m.title, m.genre, m.duration_minutes,
         <label for="customer_name">Nama</label>
         <input id="customer_name" name="customer_name" type="text" placeholder="Nama pembeli" required>
       </div>
-      <div class="wide">
+      <div>
         <label for="customer_email">Email</label>
         <input id="customer_email" name="customer_email" type="email" placeholder="nama@email.com" required>
       </div>

@@ -1,4 +1,12 @@
 <?php
+require_once __DIR__ . '/koneksi.php';
+
+if (empty($_SESSION['user_id'])) {
+    $redirect = rawurlencode($_SERVER['REQUEST_URI'] ?? 'index.php');
+    header('Location: register.php?redirect=' . $redirect);
+    exit;
+}
+
 $judulHalaman = 'Pembayaran Berhasil';
 require __DIR__ . '/includes/header.php';
 
@@ -41,6 +49,10 @@ if (!$booking) {
       <div>
         <strong>Jumlah tiket</strong><br>
         <?= angka((int)$booking['quantity']) ?> tiket
+      </div>
+      <div>
+        <strong>Kursi pilihan</strong><br>
+        <?= e($booking['seat_number'] ?? 'A1') ?>
       </div>
       <div>
         <strong>Total bayar</strong><br>

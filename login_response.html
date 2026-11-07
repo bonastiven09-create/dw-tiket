@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login · PassGo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in wrap">
+    <a class="brand" href="index.php">
+      <img src="assets/logo.svg" width="36" height="36" alt="Logo PassGo">
+      <span>PassGo<small>Cinema Ticketing</small></span>
+    </a>
+    <div class="header-actions">
+      <nav>
+        <a href="index.php" class="">Beranda</a>
+        <a href="laporan.php" class="">Laporan</a>
+        <a href="tentang.php" class="">Tentang</a>
+      </nav>
+              <a class="login-link" href="login.php">Login</a>
+          </div>
+  </div>
+</header>
+<main class="wrap">
+<br />
+<b>Fatal error</b>:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_dw_tiket.users' doesn't exist in C:\xampp\htdocs\dw-tiket\koneksi.php:54
+Stack trace:
+#0 C:\xampp\htdocs\dw-tiket\koneksi.php(54): PDO-&gt;prepare('SELECT * FROM u...')
+#1 C:\xampp\htdocs\dw-tiket\login.php(23): satu(Object(PDO), 'SELECT * FROM u...', Array)
+#2 {main}
+  thrown in <b>C:\xampp\htdocs\dw-tiket\koneksi.php</b> on line <b>54</b><br />

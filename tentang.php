@@ -1,4 +1,12 @@
 <?php
+require_once __DIR__ . '/koneksi.php';
+
+if (empty($_SESSION['user_id'])) {
+    $redirect = rawurlencode($_SERVER['REQUEST_URI'] ?? 'tentang.php');
+    header('Location: register.php?redirect=' . $redirect);
+    exit;
+}
+
 $judulHalaman = 'Tentang';
 $halaman      = 'tentang';
 require __DIR__ . '/includes/header.php';
@@ -9,7 +17,7 @@ require __DIR__ . '/includes/header.php';
   <div>
     <p class="eyebrow">Identitas brand</p>
     <h1><?= e(APP_NAME) ?></h1>
-    <p class="lead">Tiket bioskop yang mudah dipesan, dan data penjualannya yang mudah dibaca. Nama dan identitas ini dipakai untuk seluruh tampilan proyek data warehouse.</p>
+    <p class="lead">PassGo adalah platform pemesanan tiket bioskop yang dirancang untuk membuat proses booking lebih cepat, rapi, dan menyenangkan di setiap langkahnya.</p>
   </div>
 </section>
 
@@ -17,10 +25,72 @@ require __DIR__ . '/includes/header.php';
   <h2>Latar belakang</h2>
   <div class="kolom dua">
     <article class="kartu">
-      <p>Penjualan tiket bioskop berlangsung setiap hari, dari berbagai bioskop, film, dan jenis pembeli. Setiap transaksi memang tercatat, tetapi catatan itu tersimpan sebagai baris-baris terpisah yang tidak mudah diringkas. Pengelola sulit menjawab pertanyaan sederhana seperti film mana yang paling laku di bulan tertentu atau segmen pembeli mana yang paling sering memakai diskon.</p>
+      <p>PassGo lahir dari kebutuhan untuk menyederhanakan pengalaman menonton film. Banyak pengguna sering dibuat ribet karena harus membandingkan bioskop, jadwal, dan kursi secara terpisah. Platform ini dibuat agar semua proses bisa dilakukan dalam satu tempat dengan cara yang lebih terstruktur.</p>
     </article>
     <article class="kartu">
-      <p>Karena itu, <?= e(APP_NAME) ?> membangun data warehouse sebagai tempat penyimpanan khusus untuk analisis. Data dari sistem transaksi disusun ulang ke dalam skema bintang, sehingga setiap angka pendapatan dan jumlah tiket bisa ditelusuri ke dimensi waktu, film, bioskop, dan pelanggan yang menghasilkannya.</p>
+      <p>Dalam satu pengalaman, pengguna bisa memilih film, menentukan lokasi bioskop, melihat jadwal tayang, memilih jumlah tiket, menentukan kursi, dan menyelesaikan pembayaran. Tujuannya bukan hanya memudahkan transaksi, tetapi juga membuat pengalaman menonton menjadi lebih nyaman dan efisien.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Bioskop yang menggunakan layanan ini</h2>
+  <div class="kolom">
+    <article class="kartu">
+      <h3>Medan</h3>
+      <p><strong>CGV Plaza Medan</strong> · Jl. Gatot Subroto No. 88</p>
+      <p><strong>XXI Centre Point</strong> · Jl. H. Adam Malik No. 54</p>
+    </article>
+    <article class="kartu">
+      <h3>Binjai</h3>
+      <p><strong>Cinema 21 Binjai</strong> · Jl. Sisingamangaraja No. 102</p>
+    </article>
+    <article class="kartu">
+      <h3>Pematangsiantar</h3>
+      <p><strong>Cinema 21 Pematangsiantar</strong> · Jl. Merdeka No. 77</p>
+    </article>
+  </div>
+  <p class="catatan">PassGo didesain untuk mewakili pengalaman pemesanan tiket bioskop di beberapa kota utama, terutama di wilayah Sumatera Utara, dengan standar layanan yang konsisten dan mudah dikelola.</p>
+</section>
+
+<section class="section">
+  <h2>Fitur yang tersedia</h2>
+  <div class="kolom tiga">
+    <article class="kartu">
+      <h3>Login & registrasi</h3>
+      <p>Pengguna harus memiliki akun sebelum masuk ke halaman booking. Proses login dan logout sudah tersedia agar data pengguna tetap aman dan terorganisir.</p>
+    </article>
+    <article class="kartu">
+      <h3>Pilih bioskop & jadwal</h3>
+      <p>Setiap pengguna dapat memilih lokasi bioskop dan jam tayang yang tersedia sebelum melanjutkan ke proses pemesanan.</p>
+    </article>
+    <article class="kartu">
+      <h3>Jumlah tiket fleksibel</h3>
+      <p>Transaksi tidak dibatasi satu tiket saja. Pengguna bisa memilih berapa banyak kursi yang dibutuhkan sesuai kebutuhan individu maupun rombongan.</p>
+    </article>
+    <article class="kartu">
+      <h3>Pilihan kursi interaktif</h3>
+      <p>Sistem menampilkan tata letak seat secara visual dan memungkinkan pengguna memilih kursi sesuai yang tersedia dengan lebih mudah.</p>
+    </article>
+    <article class="kartu">
+      <h3>Checkout dan pembayaran</h3>
+      <p>Proses pembayaran, data pembeli, dan ringkasan transaksi dibuat dalam satu flow yang jelas untuk meminimalkan kebingungan.</p>
+    </article>
+    <article class="kartu">
+      <h3>Laporan penjualan</h3>
+      <p>Halaman laporan membantu menampilkan data transaksi secara ringkas, termasuk jumlah tiket, pendapatan, dan ringkasan aktivitas.</p>
+    </article>
+    <article class="kartu">
+      <h3>Dark mode</h3>
+      <p>Pengguna bisa berpindah antar tema terang dan gelap dengan satu tombol, yang tetap tersimpan di browser untuk pengalaman yang lebih nyaman.</p>
+    </article>
+    <article class="kartu">
+      <h3>Animasi & UX</h3>
+      <p>Transisi antar halaman, hover state, dan interaksi kecil dibuat agar tampilan terasa lebih hidup, halus, dan modern.</p>
+    </article>
+    <article class="kartu">
+      <h3>Mascot interaktif</h3>
+      <p>Maskot PassGo hadir sebagai karakter pendamping dengan ekspresi dan sambutan awal untuk membuat pengalaman pengguna terasa lebih personal.</p>
     </article>
   </div>
 </section>
@@ -30,99 +100,39 @@ require __DIR__ . '/includes/header.php';
   <div class="kolom dua">
     <article class="kartu">
       <h3>Visi</h3>
-      <p>Menjadi layanan tiket bioskop yang keputusannya didasarkan pada data yang bersih, konsisten, dan dapat dipertanggungjawabkan.</p>
+      <p>Menjadi solusi booking tiket bioskop yang modern, mudah dipakai, dan relevan bagi kebutuhan masyarakat digital saat ini.</p>
     </article>
     <article class="kartu">
       <h3>Misi</h3>
-      <p>Menyediakan data penjualan yang seragam dari setiap bioskop mitra, menyajikannya dalam laporan yang mudah dibaca, dan menjaga agar setiap angka dapat dilacak kembali ke transaksi asalnya.</p>
+      <p>Menyediakan pengalaman pemesanan yang cepat, konsisten, dan menyenangkan dari saat memilih film hingga menyelesaikan pembayaran.</p>
     </article>
   </div>
 </section>
 
 <section class="section">
-  <h2>Palet warna</h2>
-  <p class="catatan">Kelima warna ini dipakai konsisten di seluruh halaman. Nilai heksadesimal tercantum di bawah setiap contoh.</p>
-  <div class="palet">
-    <div>
-      <div class="swatch" style="background:#0e4d52"></div>
-      <div class="swatch-info"><strong>Teal Layar</strong><code>#0E4D52</code><p>Warna utama untuk header, tombol, dan batang grafik.</p></div>
-    </div>
-    <div>
-      <div class="swatch" style="background:#e9a23b"></div>
-      <div class="swatch-info"><strong>Amber Proyektor</strong><code>#E9A23B</code><p>Aksen dan sorotan, misalnya penanda menu aktif.</p></div>
-    </div>
-    <div>
-      <div class="swatch" style="background:#f6f4ef"></div>
-      <div class="swatch-info"><strong>Kertas Tiket</strong><code>#F6F4EF</code><p>Latar halaman dan logo.</p></div>
-    </div>
-    <div>
-      <div class="swatch" style="background:#1d2528"></div>
-      <div class="swatch-info"><strong>Tinta</strong><code>#1D2528</code><p>Teks utama dan judul.</p></div>
-    </div>
-    <div>
-      <div class="swatch" style="background:#b5432f"></div>
-      <div class="swatch-info"><strong>Merah Bata</strong><code>#B5432F</code><p>Label kecil dan penanda kategori.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Tipografi</h2>
+  <h2>Kenapa PassGo?</h2>
   <div class="kolom dua">
     <article class="kartu">
-      <p class="eyebrow">Judul · Georgia Bold</p>
-      <h2>Ringkasan penjualan</h2>
-      <p class="catatan">Font serif dipakai untuk judul agar terasa seperti laporan resmi. Georgia tersedia di Windows, macOS, dan Linux tanpa perlu internet.</p>
+      <h3>Praktis</h3>
+      <p>Semua kebutuhan booking tiket dapat dilakukan dalam satu platform tanpa perlu berpindah-pindah sistem.</p>
     </article>
     <article class="kartu">
-      <p class="eyebrow">Isi · Segoe UI, Roboto, sans-serif</p>
-      <p>Teks isi memakai huruf sans-serif berukuran 16 px dengan jarak baris 1,6. Angka dalam tabel rata kanan agar nilai rupiah mudah dibandingkan.</p>
-      <p class="catatan">Contoh angka: <strong>Rp 1.250.000</strong></p>
+      <h3>Nyaman</h3>
+      <p>Desain yang bersih, responsif, dan mudah dibaca membuat pengguna lebih nyaman saat menjalankan proses pemesanan.</p>
     </article>
   </div>
 </section>
 
 <section class="section">
-  <h2>Arsitektur data warehouse</h2>
-  <p class="catatan">Skema bintang: satu tabel fakta berisi ukuran penjualan, dan setiap baris fakta mengacu ke empat tabel dimensi melalui kunci asing.</p>
-  <div class="star">
-    <div class="dim atas">
-      <h3>dim_waktu</h3>
-      <p class="kolom-db">id_waktu, tanggal, hari, bulan, nama_bulan, kuartal, tahun</p>
-    </div>
-    <div class="dim kiri">
-      <h3>dim_film</h3>
-      <p class="kolom-db">id_film, kode_film, judul, genre, durasi_menit, rating</p>
-    </div>
-    <div class="fakta">
-      <h3>fact_penjualan</h3>
-      <p class="kolom-db terang">id_waktu, id_film, id_bioskop, id_pelanggan, no_transaksi, jumlah_tiket, harga_satuan, diskon, total_bayar, metode_bayar</p>
-    </div>
-    <div class="dim kanan">
-      <h3>dim_bioskop</h3>
-      <p class="kolom-db">id_bioskop, kode_bioskop, nama_bioskop, kota, jumlah_studio</p>
-    </div>
-    <div class="dim bawah">
-      <h3>dim_pelanggan</h3>
-      <p class="kolom-db">id_pelanggan, kode_segmen, nama_segmen, diskon_persen, deskripsi</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Alur pengisian data (ETL)</h2>
-  <div class="kolom">
+  <h2>Durasi pembuatan</h2>
+  <div class="kolom dua">
     <article class="kartu">
-      <h3>1. Extract</h3>
-      <p>Data transaksi diambil dari sumber penjualan, lalu dipastikan setiap baris memiliki nomor transaksi, tanggal, bioskop, film, dan jumlah tiket yang lengkap.</p>
+      <h3>Timeline proyek</h3>
+      <p>Proyek ini mulai dibangun dalam beberapa tahap: perancangan struktur fitur, pengembangan sistem login dan booking, hingga penyempurnaan UI/UX serta animasi dan branding.</p>
     </article>
     <article class="kartu">
-      <h3>2. Transform</h3>
-      <p>Tanggal diubah menjadi kunci YYYYMMDD di dimensi waktu, harga dan diskon dihitung per segmen pelanggan, lalu nilai bayar dipastikan sama dengan subtotal dikurangi diskon.</p>
-    </article>
-    <article class="kartu">
-      <h3>3. Load</h3>
-      <p>Dimensi dimuat lebih dulu, kemudian tabel fakta, supaya setiap kunci asing sudah tersedia saat baris fakta dimasukkan.</p>
+      <h3>Estimasi waktu</h3>
+      <p>Secara keseluruhan, proses pembuatan web ini berlangsung dalam waktu sekitar <strong>2 sampai 3 minggu</strong>, tergantung pada iterasi desain, revisi UI, dan pengujian fitur yang dilakukan selama pengembangan.</p>
     </article>
   </div>
 </section>

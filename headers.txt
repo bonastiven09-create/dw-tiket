@@ -1,0 +1,22 @@
+HTTP/1.1 302 Found
+Host: 127.0.0.1:8000
+Date: Sat, 07 Nov 2026 08:14:05 GMT
+Connection: close
+X-Powered-By: PHP/8.0.30
+Set-Cookie: PHPSESSID=dbg6cou76ppm71tstfe9h8t6l7; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Location: index.php
+Content-type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Host: 127.0.0.1:8000
+Date: Sat, 07 Nov 2026 08:14:06 GMT
+Connection: close
+X-Powered-By: PHP/8.0.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-type: text/html; charset=UTF-8
+

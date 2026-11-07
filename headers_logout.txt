@@ -1,0 +1,12 @@
+HTTP/1.1 302 Found
+Host: 127.0.0.1:8000
+Date: Sat, 07 Nov 2026 08:21:21 GMT
+Connection: close
+X-Powered-By: PHP/8.0.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Set-Cookie: PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/
+Location: login.php
+Content-type: text/html; charset=UTF-8
+

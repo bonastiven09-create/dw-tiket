@@ -1,4 +1,12 @@
 <?php
+require_once __DIR__ . '/koneksi.php';
+
+if (empty($_SESSION['user_id'])) {
+    $redirect = rawurlencode($_SERVER['REQUEST_URI'] ?? 'laporan.php');
+    header('Location: register.php?redirect=' . $redirect);
+    exit;
+}
+
 $judulHalaman = 'Laporan';
 $halaman      = 'laporan';
 require __DIR__ . '/includes/header.php';

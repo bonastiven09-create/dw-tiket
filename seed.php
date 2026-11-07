@@ -39,15 +39,16 @@ try {
         $stmtCinema->execute($cinema);
     }
 
+    $baseDate = new DateTimeImmutable('now', new DateTimeZone('Asia/Jakarta'));
     $screenings = [
-        [1, 1, 'Studio 1', '2026-10-27 13:00:00', 48, 26, 50000],
-        [1, 2, 'Studio 2', '2026-10-27 15:30:00', 48, 18, 50000],
-        [2, 1, 'Studio 3', '2026-10-27 17:00:00', 48, 22, 45000],
-        [3, 2, 'Studio 4', '2026-10-27 19:00:00', 48, 15, 55000],
-        [4, 3, 'Studio 1', '2026-10-28 13:30:00', 48, 31, 42000],
-        [5, 4, 'Studio 2', '2026-10-28 16:00:00', 48, 27, 40000],
-        [2, 4, 'Studio 1', '2026-10-28 18:30:00', 48, 20, 45000],
-        [3, 1, 'Studio 5', '2026-10-29 20:00:00', 48, 24, 55000],
+        [1, 1, 'Studio 1', $baseDate->modify('+1 day 13:00')->format('Y-m-d H:i:s'), 48, 26, 50000],
+        [1, 2, 'Studio 2', $baseDate->modify('+1 day 15:30')->format('Y-m-d H:i:s'), 48, 18, 50000],
+        [2, 1, 'Studio 3', $baseDate->modify('+2 day 17:00')->format('Y-m-d H:i:s'), 48, 22, 45000],
+        [3, 2, 'Studio 4', $baseDate->modify('+3 day 19:00')->format('Y-m-d H:i:s'), 48, 15, 55000],
+        [4, 3, 'Studio 1', $baseDate->modify('+4 day 13:30')->format('Y-m-d H:i:s'), 48, 31, 42000],
+        [5, 4, 'Studio 2', $baseDate->modify('+5 day 16:00')->format('Y-m-d H:i:s'), 48, 27, 40000],
+        [2, 4, 'Studio 1', $baseDate->modify('+6 day 18:30')->format('Y-m-d H:i:s'), 48, 20, 45000],
+        [3, 1, 'Studio 5', $baseDate->modify('+7 day 20:00')->format('Y-m-d H:i:s'), 48, 24, 55000],
     ];
 
     $stmtScreening = $koneksi->prepare('INSERT INTO screenings (movie_id, cinema_id, hall, showtime, total_seats, available_seats, price) VALUES (?, ?, ?, ?, ?, ?, ?)');

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beranda · PassGo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in wrap">
+    <a class="brand" href="index.php">
+      <img src="assets/logo.svg" width="36" height="36" alt="Logo PassGo">
+      <span>PassGo<small>Cinema Ticketing</small></span>
+    </a>
+    <div class="header-actions">
+      <nav>
+        <a href="index.php" class="aktif">Beranda</a>
+        <a href="laporan.php" class="">Laporan</a>
+        <a href="tentang.php" class="">Tentang</a>
+      </nav>
+              <div class="user-badge">
+          <span>Halo, Admin PassGo</span>
+          <div class="user-actions">
+            <a class="logout-link action-link" href="logout.php?redirect=login.php" data-action="switch-account" data-message="Apakah Anda ingin mengganti akun?">Ganti akun</a>
+            <a class="logout-link logout-primary action-link" href="logout.php" data-action="logout" data-message="Apakah Anda yakin ingin keluar dari akun ini?">Keluar</a>
+          </div>
+        </div>
+          </div>
+  </div>
+</header>
+
+<div class="confirm-modal" id="confirmModal" hidden>
+  <div class="confirm-modal-card">
+    <h3>Konfirmasi</h3>
+    <p id="confirmMessage">Apakah Anda yakin?</p>
+    <div class="confirm-actions">
+      <button type="button" class="secondary-btn" id="cancelConfirm">Batal</button>
+      <button type="button" class="submit-btn" id="confirmAction">Ya, lanjut</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">PassGo Cinema</p>
+  <h1>Pilih film favorit Anda dan selesai dalam hitungan menit.</h1>
+  <p class="lead">Pesan tiket bioskop online dengan jadwal yang jelas, kursi yang tersedia, dan proses pembayaran yang aman.</p>
+</section>
+
+<section class="section">
+  <h2>Film yang sedang tayang</h2>
+  <div class="movie-grid">
+          <article class="movie-card">
+        <div class="poster-box">
+          <span>13+</span>
+        </div>
+        <div class="movie-info">
+          <div class="meta-row">
+            <span>Action</span>
+            <span>132 menit</span>
+          </div>
+          <h3>The Last Guardian</h3>
+          <p>Seorang penjaga kota terakhir harus menyelamatkan dunia dari ancaman bencana besar.</p>
+          <div class="movie-footer">
+            <strong>Rp 50.000</strong>
+            <a href="checkout.php?movie_id=1">Beli tiket</a>
+          </div>
+        </div>
+      </article>
+          <article class="movie-card">
+        <div class="poster-box">
+          <span>13+</span>
+        </div>
+        <div class="movie-info">
+          <div class="meta-row">
+            <span>Drama</span>
+            <span>118 menit</span>
+          </div>
+          <h3>Moonlight Echo</h3>
+          <p>Seorang musisi muda mencoba menemukan suaranya kembali setelah kehilangan masa depannya.</p>
+          <div class="movie-footer">
+            <strong>Rp 45.000</strong>
+            <a href="checkout.php?movie_id=2">Beli tiket</a>
+          </div>
+        </div>
+      </article>
+          <article class="movie-card">
+        <div class="poster-box">
+          <span>PA</span>
+        </div>
+        <div class="movie-info">
+          <div class="meta-row">
+            <span>Adventure</span>
+            <span>126 menit</span>
+          </div>
+          <h3>Skyline Runner</h3>
+          <p>Lomba lari antariksa dengan misi melintasi ruang hampa yang mematikan.</p>
+          <div class="movie-footer">
+            <strong>Rp 55.000</strong>
+            <a href="checkout.php?movie_id=3">Beli tiket</a>
+          </div>
+        </div>
+      </article>
+          <article class="movie-card">
+        <div class="poster-box">
+          <span>17+</span>
+        </div>
+        <div class="movie-info">
+          <div class="meta-row">
+            <span>Horror</span>
+            <span>98 menit</span>
+          </div>
+          <h3>Horror Motel 9</h3>
+          <p>Kelompok teman terjebak di motel angker yang menyimpan rahasia kelam.</p>
+          <div class="movie-footer">
+            <strong>Rp 42.000</strong>
+            <a href="checkout.php?movie_id=4">Beli tiket</a>
+          </div>
+        </div>
+      </article>
+          <article class="movie-card">
+        <div class="poster-box">
+          <span>SU</span>
+        </div>
+        <div class="movie-info">
+          <div class="meta-row">
+            <span>Animation</span>
+            <span>96 menit</span>
+          </div>
+          <h3>The Little Comet</h3>
+          <p>Petualangan lucu seorang komet kecil yang ingin menemukan rumahnya.</p>
+          <div class="movie-footer">
+            <strong>Rp 40.000</strong>
+            <a href="checkout.php?movie_id=5">Beli tiket</a>
+          </div>
+        </div>
+      </article>
+      </div>
+</section>
+
+<section class="section">
+  <h2>Jadwal tayang</h2>
+  <div class="schedule-list">
+                  <div class="schedule-item">
+          <div>
+            <strong>The Little Comet</strong>
+            <p>Cinema 21 Pematangsiantar · Pematangsiantar · Studio 2</p>
+          </div>
+          <div class="schedule-meta">
+            <span>07 Nov 2026</span>
+            <span>16:00</span>
+            <span>27 kursi</span>
+            <a href="checkout.php?movie_id=5&screening_id=6">Pesan</a>
+          </div>
+        </div>
+              <div class="schedule-item">
+          <div>
+            <strong>Moonlight Echo</strong>
+            <p>Cinema 21 Pematangsiantar · Pematangsiantar · Studio 1</p>
+          </div>
+          <div class="schedule-meta">
+            <span>08 Nov 2026</span>
+            <span>18:30</span>
+            <span>20 kursi</span>
+            <a href="checkout.php?movie_id=2&screening_id=7">Pesan</a>
+          </div>
+        </div>
+              <div class="schedule-item">
+          <div>
+            <strong>Skyline Runner</strong>
+            <p>CGV Plaza Medan · Medan · Studio 5</p>
+          </div>
+          <div class="schedule-meta">
+            <span>09 Nov 2026</span>
+            <span>20:00</span>
+            <span>24 kursi</span>
+            <a href="checkout.php?movie_id=3&screening_id=8">Pesan</a>
+          </div>
+        </div>
+            </div>
+</section>
+
+<section class="section">
+  <h2>Pesan tiket cepat</h2>
+  <form class="booking-form" method="post" action="checkout.php">
+    <div class="form-grid">
+      <div>
+        <label for="movie_id">Film</label>
+        <select id="movie_id" name="movie_id" required>
+                      <option value="1">The Last Guardian</option>
+                      <option value="2">Moonlight Echo</option>
+                      <option value="3">Skyline Runner</option>
+                      <option value="4">Horror Motel 9</option>
+                      <option value="5">The Little Comet</option>
+                  </select>
+      </div>
+      <div>
+        <label for="cinema_id">Bioskop</label>
+        <select id="cinema_id" name="cinema_id" required>
+                      <option value="3">Cinema 21 Binjai · Binjai</option>
+                      <option value="1">CGV Plaza Medan · Medan</option>
+                      <option value="2">XXI Centre Point · Medan</option>
+                      <option value="4">Cinema 21 Pematangsiantar · Pematangsiantar</option>
+                  </select>
+      </div>
+      <div>
+        <label for="quantity">Jumlah tiket</label>
+        <input id="quantity" name="quantity" type="number" min="1" max="10" value="2" required>
+      </div>
+      <div>
+        <label for="payment_method">Metode pembayaran</label>
+        <select id="payment_method" name="payment_method">
+          <option value="QRIS">QRIS</option>
+          <option value="E-Wallet">E-Wallet</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+          <option value="Kartu Kredit">Kartu Kredit</option>
+        </select>
+      </div>
+      <div>
+        <label for="customer_name">Nama</label>
+        <input id="customer_name" name="customer_name" type="text" placeholder="Nama pembeli" required>
+      </div>
+      <div>
+        <label for="customer_email">Email</label>
+        <input id="customer_email" name="customer_email" type="email" placeholder="nama@email.com" required>
+      </div>
+    </div>
+    <button type="submit" class="submit-btn">Lanjut ke pembayaran</button>
+  </form>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>PassGo</strong> · Tiket Bioskop &amp; Pembayaran · Proyek mata kuliah Data Warehouse</p>
+    <p>Seluruh angka dan nama pada situs ini adalah data contoh hasil simulasi untuk keperluan tugas, bukan data transaksi nyata.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const modal = document.getElementById('confirmModal');
+    const message = document.getElementById('confirmMessage');
+    const cancelBtn = document.getElementById('cancelConfirm');
+    const confirmBtn = document.getElementById('confirmAction');
+
+    let targetUrl = '';
+
+    document.querySelectorAll('.action-link').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        targetUrl = link.getAttribute('href') || '';
+        const text = link.dataset.message || 'Apakah Anda yakin?';
+        message.textContent = text;
+        modal.hidden = false;
+      });
+    });
+
+    cancelBtn.addEventListener('click', function () {
+      modal.hidden = true;
+      targetUrl = '';
+    });
+
+    confirmBtn.addEventListener('click', function () {
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
