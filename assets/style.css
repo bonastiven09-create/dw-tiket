@@ -1168,7 +1168,23 @@ html[data-theme="dark"] .success-card .detail div,
 html[data-theme="dark"] .kpi,
 html[data-theme="dark"] .grid-kpi,
 html[data-theme="dark"] .tbl-wrap table th,
-html[data-theme="dark"] .tbl-wrap table td {
+html[data-theme="dark"] .tbl-wrap table td,
+html[data-theme="dark"] .movie-info h3,
+html[data-theme="dark"] .movie-info p,
+html[data-theme="dark"] .schedule-item h3,
+html[data-theme="dark"] .schedule-item p,
+html[data-theme="dark"] .kpi .label,
+html[data-theme="dark"] .kpi .sub,
+html[data-theme="dark"] .auth-note,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .lead,
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] span {
   color: var(--ink);
 }
 
@@ -1178,6 +1194,20 @@ html[data-theme="dark"] textarea {
   background: #0d1721;
   border-color: var(--line);
   color: var(--ink);
+}
+
+html[data-theme="dark"] .schedule-meta span {
+  background: rgba(15, 76, 92, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #edf4ff;
+}
+
+html[data-theme="dark"] .success-card .detail div,
+html[data-theme="dark"] .kpi,
+html[data-theme="dark"] .grid-kpi,
+html[data-theme="dark"] .tbl-wrap table th,
+html[data-theme="dark"] .tbl-wrap table td {
+  background: rgba(18, 31, 43, 0.96);
 }
 
 html[data-theme="dark"] .account-button {
